@@ -1,12 +1,12 @@
 <div style="">
   <img width="800" style="position: relative; " src="../assets/background.png"/>
-  <div style="width: fit-content; position: absolute; top: 250px; left: 350px;">
-    <img id="slimeyId" class="slime" width="150" src="../assets/slimeyWithBorder.png"/>
+  <div [class.wobble-hor-bottom]="css_hit" style="width: fit-content; position: absolute; top: 250px; left: 350px;">
+    <img id="slimeyId" [@death]="ng_death" [@attack]="ng_attack" [@preAttack]="ng_preAttack" class="slime" width="150" src="../assets/slimeyWithBorder.png"/>
   </div>
 </div>
 <div style="padding: 20px">
-  <button *ngIf="!slimeIsPresent" mat-raised-button color="accent" (click)="spawn()">Spawn</button>
-  <button *ngIf="slimeIsPresent" mat-raised-button color="accent" (click)="death()">Death</button>
-  <button *ngIf="slimeIsPresent" mat-raised-button color="accent" (click)="attack()">Attack</button>
-  <button *ngIf="slimeIsPresent" mat-raised-button color="accent" (click)="hit()">Hit</button>
+  <button *ngIf="!slimeIsPresent" [disabled]="cantInteractWithSlime" mat-raised-button color="accent" (click)="spawn()">Spawn</button>
+  <button *ngIf="slimeIsPresent" [disabled]="cantInteractWithSlime" mat-raised-button color="accent" (click)="death()">Death</button>
+  <button *ngIf="slimeIsPresent" [disabled]="cantInteractWithSlime" mat-raised-button color="accent" (click)="attack()">Attack</button>
+  <button *ngIf="slimeIsPresent" [disabled]="cantInteractWithSlime" mat-raised-button color="accent" (click)="hit()">Hit</button>
 </div>
